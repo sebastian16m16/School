@@ -35,9 +35,7 @@ string
 D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA1/main.cpp
 iostream
 -
-stdlib.h
--
-stdio.h
+cstdio
 -
 Profiler.h
 D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA1/Profiler.h
