@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA1/Profiler.h
+C:/School/School/AF/TEMA1/Profiler.h
 Windows.h
 -
 Shellapi.h
@@ -32,11 +32,11 @@ functional
 string
 -
 
-D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA1/main.cpp
+C:/School/School/AF/TEMA1/main.cpp
 iostream
 -
 cstdio
 -
 Profiler.h
-D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA1/Profiler.h
+C:/School/School/AF/TEMA1/Profiler.h
 
