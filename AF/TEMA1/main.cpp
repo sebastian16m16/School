@@ -2,7 +2,7 @@
 #include <cstdio>
 #include "Profiler.h"
 
-int n = 10;
+const int n = 10000;
 Profiler profiler("SortProfiler");
 //Operation bs1 = profiler.createOperation("BS-Moves", n);
 //Operation ss1 = profiler.createOperation("SS-Moves", n);
@@ -11,16 +11,19 @@ void bubbleSort(int * arr, int x){
 
     int size = x;
     int aux;
+    bool swaps = true;
 
-    while(size != 0) {
+    while(swaps) {
+        swaps = false;
         for (int j = 0; j < size; j++) {
-            profiler.countOperation("BS", x, 1);
             for (int i = 0; i < size - 1; i++) {
+                profiler.countOperation("BS_comp", x, 1);
                 if (arr[i] > arr[i + 1]) {
                     aux = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = aux;
-                    profiler.countOperation("BS", x, 3);
+                    swaps = true;
+                    profiler.countOperation("BS_assign", x, 3);
                 }
             }
             --size;
@@ -33,94 +36,55 @@ void selectionSort(int * arr, int x){
     int aux;
 
     for(int i=0; i<x; i++){
-        profiler.countOperation("SS", x, 1);
+        //profiler.countOperation("SS", x, 1);
         min_index = i;
         for(int j=i+1; j < x; j++){
+            profiler.countOperation("SS_comp", x, 1);
             if(arr[j] < arr[min_index]){
                 min_index = j;
             }
         }
-        aux = arr[i];
-        arr[i] = arr[min_index];
-        arr[min_index] = aux;
-        profiler.countOperation("SS", x, 3);
+        if(i!=min_index) {
+            aux = arr[i];
+            arr[i] = arr[min_index];
+            arr[min_index] = aux;
+            profiler.countOperation("SS_assign", x, 3);
+        }
     }
 }
 
-void merge(int arr[], int l, int m, int r) {
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
+/* for i = 2 to n
+ * aux = A[i]
+ * j=i=1;
+ * while j>= 1 & aux < A[j]
+ *      A[j+1] = A[j]
+ *      j= j -1
+ * A[j+1] = aux
+ *
+ * */
 
-    /* create temp arrays */
-    int L[n1], R[n2];
 
-    /* Copy data to temp arrays L[] and R[] */
-    for (i = 0; i < n1; i++){
-        profiler.countOperation("MS", r, 1);
-    L[i] = arr[l + i];
-    }
-    for (j = 0; j < n2; j++) {
-        profiler.countOperation("MS", r, 1);
-        R[j] = arr[m + 1+ j];
-    }
-
-    /* Merge the temp arrays back into arr[l..r]*/
-    i = 0; // Initial index of first subarray
-    j = 0; // Initial index of second subarray
-    k = l; // Initial index of merged subarray
-    while (i < n1 && j < n2)
-    {
-        if (L[i] <= R[j])
-        {
-            arr[k] = L[i];
-            profiler.countOperation("MS", r, 1);
-            i++;
-        }
-        else
-        {
-            arr[k] = R[j];
-            profiler.countOperation("MS", r, 1);
-            j++;
-        }
-        k++;
-    }
-
-    /* Copy the remaining elements of L[], if there
-       are any */
-    while (i < n1)
-    {
-        arr[k] = L[i];
-        profiler.countOperation("MS", r, 1);
-        i++;
-        k++;
-    }
-
-    /* Copy the remaining elements of R[], if there
-       are any */
-    while (j < n2)
-    {
-        arr[k] = R[j];
-        profiler.countOperation("MS", r, 1);
-        j++;
-        k++;
-    }
-}
-
-void mergeSort(int arr[], int l, int r)
+void insertionSort(int arr[], int x)
 {
-    if (l < r)
+    int i, key, j;
+    for (i = 1; i < x; i++)
     {
+        profiler.countOperation("IS_assign", x, 1);
+        key = arr[i];
+        j = i - 1;
 
-        // Same as (l+r)/2, but avoids overflow for
-        // large l and h
-        int m = l+(r-l)/2;
 
-        // Sort first and second halves
-        mergeSort(arr, l, m);
-        mergeSort(arr, m+1, r);
-
-        merge(arr, l, m, r);
+        while (j >= 0 && arr[j] > key)
+        {
+            profiler.countOperation("IS_comp", x, 1);
+            profiler.countOperation("IS_assign", x, 1);
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        if(j>=0)
+            profiler.countOperation("IS_comp", x, 1);
+        profiler.countOperation("IS_assign", x, 1);
+        arr[j + 1] = key;
     }
 }
 
@@ -139,36 +103,42 @@ void copyArrayAtoB(int *a, int *b, int x){
 
 int main() {
 
-    int a[1000];
-    int b[1000];
-    int c[1000];
-    FillRandomArray(a, 1000, 1, 60, false, 0);
-    copyArrayAtoB(a, b, 1000);
-    copyArrayAtoB(a, c, 1000);
+    int a[n];
+    int b[n];
+    int c[n];
+    FillRandomArray(a, n, 1, 60, false, 0);
+    copyArrayAtoB(a, b, n);
+    copyArrayAtoB(a, c, n);
 
         printf("THE ARRAY: \n");
         printArray(a, n);
         printf("\n");
         printf("\n");
 
-    for(int j=0; j <= 1000; j++) {
-        for (int i = 10; i < 1000; i += 10) {
+    for(int j=0; j <= 5; j++) {
+        for (int i = 100; i < n; i += 300) {
             bubbleSort(a, i);
             selectionSort(b, i);
-            mergeSort(c, 0, i);
+            insertionSort(c, i);
         }
     }
-    printArray(a, 1000);
+    printArray(a, n);
     printf("\n");
     printf("\n");
-    printArray(b, 1000);
+    printArray(b, n);
     printf("\n");
     printf("\n");
-    printArray(c, 1000);
+    printArray(c, n);
     printf("\n");
     printf("\n");
 
-    profiler.createGroup("BSearch", "BS", "SS", "MS");
+    profiler.addSeries("BS", "BS_comp", "BS_assign");
+    profiler.addSeries("SS", "SS_comp", "SS_assign");
+    profiler.addSeries("IS", "IS_comp", "IS_assign");
+
+    profiler.createGroup("Comp", "BS_comp", "SS_comp","IS_comp");
+    profiler.createGroup("Assign","BS_assign" , "SS_assign", "IS_assign");
+    profiler.createGroup("Operations", "BS", "SS", "IS");
     profiler.showReport();
 
     return 0;
