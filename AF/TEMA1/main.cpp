@@ -3,17 +3,16 @@
 #include "Profiler.h"
 
 const int n = 10000;
-Profiler profiler("SortProfiler");
-//Operation bs1 = profiler.createOperation("BS-Moves", n);
-//Operation ss1 = profiler.createOperation("SS-Moves", n);
+Profiler profiler("Ideal");
 
-void bubbleSort(int * arr, int x){
+
+void bubbleSort(int* arr, int x) {
 
     int size = x;
     int aux;
     bool swaps = true;
 
-    while(swaps) {
+    while (swaps) {
         swaps = false;
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < size - 1; i++) {
@@ -31,20 +30,20 @@ void bubbleSort(int * arr, int x){
     }
 }
 
-void selectionSort(int * arr, int x){
+void selectionSort(int* arr, int x) {
     int min_index;
     int aux;
 
-    for(int i=0; i<x; i++){
+    for (int i = 0; i < x; i++) {
         //profiler.countOperation("SS", x, 1);
         min_index = i;
-        for(int j=i+1; j < x; j++){
+        for (int j = i + 1; j < x; j++) {
             profiler.countOperation("SS_comp", x, 1);
-            if(arr[j] < arr[min_index]){
+            if (arr[j] < arr[min_index]) {
                 min_index = j;
             }
         }
-        if(i!=min_index) {
+        if (i != min_index) {
             aux = arr[i];
             arr[i] = arr[min_index];
             arr[min_index] = aux;
@@ -63,7 +62,6 @@ void selectionSort(int * arr, int x){
  *
  * */
 
-
 void insertionSort(int arr[], int x)
 {
     int i, key, j;
@@ -81,65 +79,51 @@ void insertionSort(int arr[], int x)
             arr[j + 1] = arr[j];
             j = j - 1;
         }
-        if(j>=0)
+        if (j >= 0)
             profiler.countOperation("IS_comp", x, 1);
         profiler.countOperation("IS_assign", x, 1);
         arr[j + 1] = key;
     }
 }
 
-void printArray(int * arr, int x){
-    for(int i=0; i<x; i++){
+void printArray(int* arr, int x) {
+    for (int i = 0; i < x; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
 
-void copyArrayAtoB(int *a, int *b, int x){
-    for(int i=0; i < x; i++){
+void copyArrayAtoB(int* a, int* b, int x) {
+    for (int i = 0; i < x; i++) {
         b[i] = a[i];
     }
 }
 
-int main() {
+int main(){
 
     int a[n];
     int b[n];
     int c[n];
-    FillRandomArray(a, n, 1, 60, false, 0);
-    copyArrayAtoB(a, b, n);
-    copyArrayAtoB(a, c, n);
 
-        printf("THE ARRAY: \n");
-        printArray(a, n);
-        printf("\n");
-        printf("\n");
+    for (int i = 100; i < n; i += 300) {
+        FillRandomArray(a, i, 1, 60000, false, 1);
+        copyArrayAtoB(a, b, i);
+        copyArrayAtoB(a, c, i);
 
-    for(int j=0; j <= 5; j++) {
-        for (int i = 100; i < n; i += 300) {
-            bubbleSort(a, i);
-            selectionSort(b, i);
-            insertionSort(c, i);
-        }
+        //Ideal
+        bubbleSort(a, i);
+        selectionSort(b, i);
+        insertionSort(c, i);
     }
-    printArray(a, n);
-    printf("\n");
-    printf("\n");
-    printArray(b, n);
-    printf("\n");
-    printf("\n");
-    printArray(c, n);
-    printf("\n");
-    printf("\n");
 
     profiler.addSeries("BS", "BS_comp", "BS_assign");
     profiler.addSeries("SS", "SS_comp", "SS_assign");
     profiler.addSeries("IS", "IS_comp", "IS_assign");
 
-    profiler.createGroup("Comp", "BS_comp", "SS_comp","IS_comp");
-    profiler.createGroup("Assign","BS_assign" , "SS_assign", "IS_assign");
-    profiler.createGroup("Operations", "BS", "SS", "IS");
-    profiler.showReport();
+    profiler.createGroup("Comp_IDEAL", "BS_comp", "SS_comp", "IS_comp");
+    profiler.createGroup("Assign_IDEAL", "BS_assign", "SS_assign", "IS_assign");
+    profiler.createGroup("Operations_IDEAL", "BS", "SS", "IS");
 
+    profiler.showReport();
     return 0;
 }
