@@ -1,13 +1,32 @@
+/*
+ * Ideal:
+ *In the ideal case the only one who makes assignations is the Insertion sort algorithm and when it comes to comparing, Insertion sort does the least comparing operations. In general, if we take an overall comparison Selection Sort does the most operations,
+ *Bubble Sort comes right after and the Insertion Sort does the least operations. In ideal case - the right choice is the Insertion sort.
+ *
+ * Worst:
+ * In the worst case the the one who makes the least assignations is the Selection sort, after that it comes the Insertion Sort and then the Bubble sort. When it comes to comparisons they are all around the same area, only the Insertion Sort has less
+ * comparisons, but just with a few.. nevertheless that make the Insertion sort be the favorite in this area. The average of the algorithms in this case scenario shows that the Selection Sort has the least operations, followed by the Insertion Sort and
+ * then the Bubble sort. So in the case "worst" the one to choose is the Selection Sort
+ *
+ * Statistic:
+ * In the statistic case Selection Sort has the least assignations but the most comparisons, the Bubble Sort has the most assignations and the second number of comparisons. The Insertion sort is second in assignations and first
+ * (when it comes to the least number of comparisons).  In the general scope, we get an average of the operations and the algorithm to choose is Insertion Sort
+ *
+ * Conclusion:
+ * After evaluating every case scenario, the best algorithm with the least operations (in average) is the Insertion Sort.
+ * The second best is Selection Sort and the third is the Bubble sort.
+*/
+
+
+
+
+
 #include <iostream>
 #include <cstdio>
 #include "Profiler.h"
 
 const int n = 10000;
 Profiler profiler("Statistic");
-
-
-
-
 
 void bubbleSort(int* arr, int x) {
 
