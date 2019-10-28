@@ -1,11 +1,24 @@
+/*
+ * Heapsort is the ideal algorithm for sorting an array if you are to choose between quicksort and heapsort. It uses Heapify which has a time complexity of O(Logn)
+ * and Build_max_heap which has a time complexity of O(n) resulting in an overall time complexity of O(nLogn)
+ *
+ * Quicksort being a divide and conquer algorithm it picks an element as pivot and partitions the given array around the picked pivot.
+ * Depends on the case... it has different time complexities: Worst: O(n^2), Best: O(nLogn) and Average: O(nLogn)
+ *
+ * Both algorithms have For the average case O(nLogn), but considering the fact that in the worst case, the Quicksort algorithm is really slow, that gives a big
+ * advantage to the Heapsort, making the Heapsort algorithm the best choice
+ */
+
+
+
 #include "Profiler.h"
 const int n = 10000;
 
 Profiler profiler("HeapSort_QuickSort");
 
 //Heapsort
-bool fare(int n){
-    return n % 2 == 0;
+bool fare(int x){
+    return x % 2 == 0;
 }
 int left(int i){
     return (i * 2) + 1;
@@ -103,6 +116,7 @@ int partition(int *a, int first, int last, Operation comp, Operation assign){
 void QuickSort(int *a, int first, int last, Operation comp, Operation assign){
     int pivot = 0;
     if(first < last){
+        assign.count(1);
         pivot = partition(a, first, last, comp, assign);
         QuickSort(a, first, pivot - 1, comp, assign);
         QuickSort(a, pivot + 1, last, comp, assign);
@@ -140,7 +154,7 @@ int main() {
 //    printf("The %d'th smallest element is: %d\n", key, QuickSelect(a, 0, n, key));
 
     for(int i=0; i<5; i++){
-        for(int j=100; j < n; j+=100){
+        for(int j=10; j <= n; j+=10){
             Operation HeapSort_Comp = profiler.createOperation("HeapSort_Comp", j);
             Operation HeapSort_Assign = profiler.createOperation("HeapSort_Assign", j);
 
@@ -161,6 +175,61 @@ int main() {
     profiler.createGroup("General", "HeapSort","QuickSort");
     profiler.createGroup("Comparisons", "HeapSort_Comp","QuickSort_Comp");
     profiler.createGroup("Assignations", "HeapSort_Assign","QuickSort_Assign");
+
+
+    //Caz favorabil
+
+    profiler.reset("Favorabil");
+
+
+    for(int j=10; j <= n; j+=10){
+        Operation HeapSort_Comp = profiler.createOperation("HeapSort_Comp", j);
+        Operation HeapSort_Assign = profiler.createOperation("HeapSort_Assign", j);
+
+        Operation QuickSort_Comp = profiler.createOperation("QuickSort_Comp", j);
+        Operation QuickSort_Assign = profiler.createOperation("QuickSort_Assign", j);
+
+        FillRandomArray(a, j, 1, 20, false, 1);
+        copyArray(a, b, j);
+
+        HeapSort(a, j, HeapSort_Comp, HeapSort_Assign);
+        QuickSort(b, 0, j, QuickSort_Comp, QuickSort_Assign);
+    }
+
+
+    profiler.addSeries("HeapSort", "HeapSort_Comp", "HeapSort_Assign");
+    profiler.addSeries("QuickSort", "QuickSort_Comp", "QuickSort_Assign");
+
+    profiler.createGroup("General_Ideal", "HeapSort","QuickSort");
+    profiler.createGroup("Comparisons_Ideal", "HeapSort_Comp","QuickSort_Comp");
+    profiler.createGroup("Assignations_Ideal", "HeapSort_Assign","QuickSort_Assign");
+
+    //Caz defavorabil
+
+    profiler.reset("Defavorabil");
+
+
+    for(int j=10; j <= n; j+=10){
+        Operation HeapSort_Comp = profiler.createOperation("HeapSort_Comp", j);
+        Operation HeapSort_Assign = profiler.createOperation("HeapSort_Assign", j);
+
+        Operation QuickSort_Comp = profiler.createOperation("QuickSort_Comp", j);
+        Operation QuickSort_Assign = profiler.createOperation("QuickSort_Assign", j);
+
+        FillRandomArray(a, j, 1, 20, false, 2);
+        copyArray(a, b, j);
+
+        HeapSort(a, j, HeapSort_Comp, HeapSort_Assign);
+        QuickSort(b, 0, j, QuickSort_Comp, QuickSort_Assign);
+    }
+
+
+    profiler.addSeries("HeapSort", "HeapSort_Comp", "HeapSort_Assign");
+    profiler.addSeries("QuickSort", "QuickSort_Comp", "QuickSort_Assign");
+
+    profiler.createGroup("General_Worst", "HeapSort","QuickSort");
+    profiler.createGroup("Comparisons_Worst", "HeapSort_Comp","QuickSort_Comp");
+    profiler.createGroup("Assignations_Worst", "HeapSort_Assign","QuickSort_Assign");
 
     profiler.showReport();
 
