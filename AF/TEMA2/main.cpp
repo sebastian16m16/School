@@ -116,13 +116,38 @@ bool checkAlgorithmsOutput(int *a, int *b, int length){
     return true;
 }
 
+void Heap_Increase_Key(int *a, int i, Operation comp, Operation assign){
+    comp.count(1);
+    while(i > 0 && a[head(i)] < a[i]){
+        swap(i, head(i), a);
+        assign.count(3);
+        i = head(i);
+    }
+}
+
+void Build_Heap_Top_Down(int * a, int length, Operation comp, Operation assign){
+    for(int i=1; i < length; i++){
+        Heap_Increase_Key(a, i, comp, assign);
+    }
+}
+
 int main() {
 
     int a[n];
     int b[n];
     int c[n];
     //int b[n] = { 5, 8, 13, 2, 11, 1, 2, 6, 9, 0};
-
+//
+//            FillRandomArray(a, n, 1, 50, false, 0);
+//            copyArray(a, b, n);
+//            copyArray(a, c, n);
+//            Operation BottomUp_Comp = profiler.createOperation("BottomUp_Comp",n);
+//            Operation BottomUp_Assign = profiler.createOperation("BottomUp_Assign",n);
+//            Operation TopDown_Comp = profiler.createOperation("TopDown_Comp",n);
+//            Operation TopDown_Assign = profiler.createOperation("TopDown_Assign",n);
+//            Operation HeapSortO_Comp = profiler.createOperation("HeapSort_Comp",n);
+//            Operation HeapSortO_Assign = profiler.createOperation("HeapSort_Assign",n);
+//
 //    printf("Bottom_UP: ");
 //    printArray(a, n);
 //    Build_Max_Heap(a, n, BottomUp_Comp, BottomUp_Assign);
@@ -139,7 +164,7 @@ int main() {
 //
 //    printf("Top_DOWN: ");
 //    printArray(b, n);
-//    top_down_constr(b, n, TopDown_Comp, TopDown_Assign);
+//    Build_Heap_Top_Down(b, n);
 //    printf("Max_Heap_TopDown: ");
 //    printArray(b, n);
 //    printf("\n");
@@ -155,14 +180,14 @@ int main() {
 //            Operation HeapSortO_Comp = profiler.createOperation("HeapSort_Comp",j);
 //            Operation HeapSortO_Assign = profiler.createOperation("HeapSort_Assign",j);
             Build_Max_Heap(a, j, BottomUp_Comp, BottomUp_Assign);
-            top_down_constr(b, j, TopDown_Comp, TopDown_Assign);
+            Build_Heap_Top_Down(b, j, TopDown_Comp, TopDown_Assign);
         }
     }
 
     profiler.addSeries("BottomUp", "BottomUp_Comp", "BottomUp_Assign");
     profiler.addSeries("TopDown", "TopDown_Comp", "TopDown_Assign");
 
-    profiler.createGroup("Compare_General", "BottomUp", "TopDown");
+    profiler.createGroup("General", "BottomUp", "TopDown");
     profiler.createGroup("Comparisons", "BottomUp_Comp", "TopDown_Comp");
     profiler.createGroup("Assignations", "BottomUp_Assign", "TopDown_Assign");
 
@@ -182,13 +207,13 @@ int main() {
 //            Operation HeapSortO_Comp = profiler.createOperation("HeapSort_Comp",j);
 //            Operation HeapSortO_Assign = profiler.createOperation("HeapSort_Assign",j);
         Build_Max_Heap(a, j, BottomUp_Comp, BottomUp_Assign);
-        top_down_constr(b, j, TopDown_Comp, TopDown_Assign);
+        Build_Heap_Top_Down(b, j, TopDown_Comp, TopDown_Assign);
     }
 
     profiler.addSeries("BottomUp", "BottomUp_Comp", "BottomUp_Assign");
     profiler.addSeries("TopDown", "TopDown_Comp", "TopDown_Assign");
 
-    profiler.createGroup("Compare_General_Defavorabil", "BottomUp", "TopDown");
+    profiler.createGroup("General_Defavorabil", "BottomUp", "TopDown");
     profiler.createGroup("Comparisons_Defavorabil", "BottomUp_Comp", "TopDown_Comp");
     profiler.createGroup("Assignations_Defavorabil", "BottomUp_Assign", "TopDown_Assign");
 
@@ -206,13 +231,13 @@ int main() {
 //            Operation HeapSortO_Comp = profiler.createOperation("HeapSort_Comp",j);
 //            Operation HeapSortO_Assign = profiler.createOperation("HeapSort_Assign",j);
         Build_Max_Heap(a, j, BottomUp_Comp, BottomUp_Assign);
-        top_down_constr(b, j, TopDown_Comp, TopDown_Assign);
+        Build_Heap_Top_Down(b, j, TopDown_Comp, TopDown_Assign);
     }
 
     profiler.addSeries("BottomUp", "BottomUp_Comp", "BottomUp_Assign");
     profiler.addSeries("TopDown", "TopDown_Comp", "TopDown_Assign");
 
-    profiler.createGroup("Compare_General_Favorabil", "BottomUp", "TopDown");
+    profiler.createGroup("General_Favorabil", "BottomUp", "TopDown");
     profiler.createGroup("Comparisons_Favorabil", "BottomUp_Comp", "TopDown_Comp");
     profiler.createGroup("Assignations_Favorabil", "BottomUp_Assign", "TopDown_Assign");
 
