@@ -145,16 +145,25 @@ int main() {
     int a[n];
     int b[n];
 
+//    Operation HeapSort_Comp = profiler.createOperation("HeapSort_Comp", n);
+//    Operation HeapSort_Assign = profiler.createOperation("HeapSort_Assign", n);
+//
+//    Operation QuickSort_Comp = profiler.createOperation("QuickSort_Comp", n);
+//    Operation QuickSort_Assign = profiler.createOperation("QuickSort_Assign", n);
+//
+//    FillRandomArray(a, n, 1, 20, false, 0);
+//    copyArray(a, b, n);
+//
 //    printArray(a, n);
-//    QuickSort(a, 0, n);
-//    printArray(a, n);
+//    QuickSort(b, 0, n, QuickSort_Comp, QuickSort_Assign);
+//    printArray(b, n);
 //
 //    int key = 8;
 //    int realKey = key -1;
-//    printf("The %d'th smallest element is: %d\n", key, QuickSelect(a, 0, n, key));
+//    printf("The %d'th smallest element is: %d\n", key, QuickSelect(a, 0, n, key, QuickSort_Comp, QuickSort_Assign));
 
     for(int i=0; i<5; i++){
-        for(int j=10; j <= n; j+=10){
+        for(int j=100; j <= n; j+=100){
             Operation HeapSort_Comp = profiler.createOperation("HeapSort_Comp", j);
             Operation HeapSort_Assign = profiler.createOperation("HeapSort_Assign", j);
 
@@ -179,10 +188,10 @@ int main() {
 
     //Caz favorabil
 
-    profiler.reset("Favorabil");
+    profiler.reset("IDEAL");
 
 
-    for(int j=10; j <= n; j+=10){
+    for(int j=100; j <= n; j+=100){
         Operation HeapSort_Comp = profiler.createOperation("HeapSort_Comp", j);
         Operation HeapSort_Assign = profiler.createOperation("HeapSort_Assign", j);
 
@@ -209,7 +218,7 @@ int main() {
     profiler.reset("Defavorabil");
 
 
-    for(int j=10; j <= n; j+=10){
+    for(int j=100; j <= n; j+=100){
         Operation HeapSort_Comp = profiler.createOperation("HeapSort_Comp", j);
         Operation HeapSort_Assign = profiler.createOperation("HeapSort_Assign", j);
 
