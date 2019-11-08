@@ -1,1 +1,4 @@
 .idea
+/SD/Doc1/.vs/Doc1/v16/Server/sqlite3/db.lock
+/SD/H2/.vs/H2/v16/Server/sqlite3/db.lock
+node_modules

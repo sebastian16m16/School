@@ -170,7 +170,7 @@ int main() {
             Operation QuickSort_Comp = profiler.createOperation("QuickSort_Comp", j);
             Operation QuickSort_Assign = profiler.createOperation("QuickSort_Assign", j);
 
-            FillRandomArray(a, j, 1, 20, false, 0);
+            FillRandomArray(a, j, 10, 50000, false, 0);
             copyArray(a, b, j);
 
             HeapSort(a, j, HeapSort_Comp, HeapSort_Assign);
@@ -198,7 +198,7 @@ int main() {
         Operation QuickSort_Comp = profiler.createOperation("QuickSort_Comp", j);
         Operation QuickSort_Assign = profiler.createOperation("QuickSort_Assign", j);
 
-        FillRandomArray(a, j, 1, 20, false, 1);
+        FillRandomArray(a, j, 10, 50000, false, 1);
         copyArray(a, b, j);
 
         HeapSort(a, j, HeapSort_Comp, HeapSort_Assign);
@@ -225,7 +225,7 @@ int main() {
         Operation QuickSort_Comp = profiler.createOperation("QuickSort_Comp", j);
         Operation QuickSort_Assign = profiler.createOperation("QuickSort_Assign", j);
 
-        FillRandomArray(a, j, 1, 20, false, 2);
+        FillRandomArray(a, j, 10, 50000, false, 2);
         copyArray(a, b, j);
 
         HeapSort(a, j, HeapSort_Comp, HeapSort_Assign);

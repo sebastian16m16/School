@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Caregiver">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="birthdate" Type="date" Nullable="false" />
+          <Property Name="gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="birthdate" Type="date" Nullable="false" />
+          <Property Name="gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="medical_record" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="patient" Type="int" />
+        </EntityType>
+        <EntityType Name="Medication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="side_effect" Type="int" Nullable="false" />
+          <Property Name="dosage" Type="int" />
+        </EntityType>
+        <EntityType Name="Medication_Plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="patient" Type="int" />
+          <Property Name="medication" Type="int" />
+          <Property Name="assigned_by" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="birthdate" Type="date" Nullable="false" />
+          <Property Name="gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="doctor" Type="int" Nullable="false" />
+          <Property Name="caregiver" Type="int" />
+          <Property Name="medication_plan" Type="int" />
+        </EntityType>
+        <EntityType Name="Side_Effect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Medication_Plan_Medication">
+          <End Role="Medication" Type="Self.Medication" Multiplicity="0..1" />
+          <End Role="Medication_Plan" Type="Self.Medication_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Medication_Plan">
+              <PropertyRef Name="medication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medication_Side_Effect">
+          <End Role="Side_Effect" Type="Self.Side_Effect" Multiplicity="1" />
+          <End Role="Medication" Type="Self.Medication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Side_Effect">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Medication">
+              <PropertyRef Name="side_effect" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Caregiver">
+          <End Role="Caregiver" Type="Self.Caregiver" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caregiver">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="caregiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Medication_Plan">
+          <End Role="Medication_Plan" Type="Self.Medication_Plan" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medication_Plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="medication_plan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalModelStoreContainer">
+          <EntitySet Name="Caregiver" EntityType="Self.Caregiver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medication" EntityType="Self.Medication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medication_Plan" EntityType="Self.Medication_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Side_Effect" EntityType="Self.Side_Effect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Medication_Plan_Medication" Association="Self.FK_Medication_Plan_Medication">
+            <End Role="Medication" EntitySet="Medication" />
+            <End Role="Medication_Plan" EntitySet="Medication_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medication_Side_Effect" Association="Self.FK_Medication_Side_Effect">
+            <End Role="Side_Effect" EntitySet="Side_Effect" />
+            <End Role="Medication" EntitySet="Medication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Caregiver" Association="Self.FK_Patient_Caregiver">
+            <End Role="Caregiver" EntitySet="Caregiver" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Doctor" Association="Self.FK_Patient_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Medication_Plan" Association="Self.FK_Patient_Medication_Plan">
+            <End Role="Medication_Plan" EntitySet="Medication_Plan" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Caregiver">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK_Patient_Caregiver" FromRole="Caregiver" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="medical_record" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="patient" Type="Int32" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK_Patient_Doctor" FromRole="Doctor" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Medication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="side_effect" Type="Int32" Nullable="false" />
+          <Property Name="dosage" Type="Int32" />
+          <NavigationProperty Name="Medication_Plan" Relationship="Self.FK_Medication_Plan_Medication" FromRole="Medication" ToRole="Medication_Plan" />
+          <NavigationProperty Name="Side_Effect1" Relationship="Self.FK_Medication_Side_Effect" FromRole="Medication" ToRole="Side_Effect" />
+        </EntityType>
+        <EntityType Name="Medication_Plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="patient" Type="Int32" />
+          <Property Name="medication" Type="Int32" />
+          <Property Name="assigned_by" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Medication1" Relationship="Self.FK_Medication_Plan_Medication" FromRole="Medication_Plan" ToRole="Medication" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK_Patient_Medication_Plan" FromRole="Medication_Plan" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doctor" Type="Int32" Nullable="false" />
+          <Property Name="caregiver" Type="Int32" />
+          <Property Name="medication_plan" Type="Int32" />
+          <NavigationProperty Name="Caregiver1" Relationship="Self.FK_Patient_Caregiver" FromRole="Patient" ToRole="Caregiver" />
+          <NavigationProperty Name="Doctor1" Relationship="Self.FK_Patient_Doctor" FromRole="Patient" ToRole="Doctor" />
+          <NavigationProperty Name="Medication_Plan1" Relationship="Self.FK_Patient_Medication_Plan" FromRole="Patient" ToRole="Medication_Plan" />
+        </EntityType>
+        <EntityType Name="Side_Effect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="detail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Medications" Relationship="Self.FK_Medication_Side_Effect" FromRole="Side_Effect" ToRole="Medication" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Patient_Caregiver">
+          <End Role="Caregiver" Type="Self.Caregiver" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caregiver">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="caregiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medication_Plan_Medication">
+          <End Role="Medication" Type="Self.Medication" Multiplicity="0..1" />
+          <End Role="Medication_Plan" Type="Self.Medication_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Medication_Plan">
+              <PropertyRef Name="medication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medication_Side_Effect">
+          <End Role="Side_Effect" Type="Self.Side_Effect" Multiplicity="1" />
+          <End Role="Medication" Type="Self.Medication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Side_Effect">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Medication">
+              <PropertyRef Name="side_effect" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Medication_Plan">
+          <End Role="Medication_Plan" Type="Self.Medication_Plan" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medication_Plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="medication_plan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Caregivers" EntityType="Self.Caregiver" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="Medications" EntityType="Self.Medication" />
+          <EntitySet Name="Medication_Plan" EntityType="Self.Medication_Plan" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="Side_Effect" EntityType="Self.Side_Effect" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Patient_Caregiver" Association="Self.FK_Patient_Caregiver">
+            <End Role="Caregiver" EntitySet="Caregivers" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Doctor" Association="Self.FK_Patient_Doctor">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medication_Plan_Medication" Association="Self.FK_Medication_Plan_Medication">
+            <End Role="Medication" EntitySet="Medications" />
+            <End Role="Medication_Plan" EntitySet="Medication_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medication_Side_Effect" Association="Self.FK_Medication_Side_Effect">
+            <End Role="Side_Effect" EntitySet="Side_Effect" />
+            <End Role="Medication" EntitySet="Medications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Medication_Plan" Association="Self.FK_Patient_Medication_Plan">
+            <End Role="Medication_Plan" EntitySet="Medication_Plan" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalModelStoreContainer" CdmEntityContainer="HospitalEntities">
+          <EntitySetMapping Name="Caregivers">
+            <EntityTypeMapping TypeName="HospitalModel.Caregiver">
+              <MappingFragment StoreEntitySet="Caregiver">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="HospitalModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="medical_record" ColumnName="medical_record" />
+                <ScalarProperty Name="patient" ColumnName="patient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medications">
+            <EntityTypeMapping TypeName="HospitalModel.Medication">
+              <MappingFragment StoreEntitySet="Medication">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="side_effect" ColumnName="side_effect" />
+                <ScalarProperty Name="dosage" ColumnName="dosage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medication_Plan">
+            <EntityTypeMapping TypeName="HospitalModel.Medication_Plan">
+              <MappingFragment StoreEntitySet="Medication_Plan">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patient" ColumnName="patient" />
+                <ScalarProperty Name="medication" ColumnName="medication" />
+                <ScalarProperty Name="assigned_by" ColumnName="assigned_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="HospitalModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="doctor" ColumnName="doctor" />
+                <ScalarProperty Name="caregiver" ColumnName="caregiver" />
+                <ScalarProperty Name="medication_plan" ColumnName="medication_plan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Side_Effect">
+            <EntityTypeMapping TypeName="HospitalModel.Side_Effect">
+              <MappingFragment StoreEntitySet="Side_Effect">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HospitalModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
