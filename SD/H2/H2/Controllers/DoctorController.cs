@@ -20,7 +20,7 @@ namespace H2.Controllers
         {
             DataTable table = new DataTable();
 
-            string query = "select * from Doctor";
+            string query = "select * from dbo.Doctor";
 
             using (con)
             using (var command = new SqlCommand(query, con))
@@ -42,7 +42,7 @@ namespace H2.Controllers
             {
                 DataTable tabel = new DataTable();
 
-                string query = String.Format("insert into Doctor(first_name, last_name, birthdate, medical_record, address, gender) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+                string query = String.Format("insert into dbo.Doctor(first_name, last_name, birthdate, medical_record, address, gender) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
                     doctor.first_name, doctor.last_name, date, doctor.medical_record, doctor.address, doctor.gender);
 
                 using (con)

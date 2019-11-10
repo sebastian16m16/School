@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { Login } from "./components/login";
+import { Login } from "./components/Login/login";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import DoctorPage from "./components/doctorPage";
-import CaregiverPage from "./components/caregiverPage";
-import Navigation from "./components/navigation";
+import DoctorPage from "./components/Doctor/doctorPage";
+import CaregiverPage from "./components/Caregiver/caregiverPage";
+import Navigation from "./components/layout/navigation";
 
 function App() {
   return (

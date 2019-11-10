@@ -1,3 +1,0 @@
-D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA4/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA4/cmake-build-debug/CMakeFiles/TEMA4.dir
-D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA4/cmake-build-debug/CMakeFiles/rebuild_cache.dir

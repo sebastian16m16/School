@@ -65,3 +65,7 @@ insert into Medication_Plan(name ,medication, assigned_by) values ('Njj2',5, 2);
 insert into Medication_Plan(name ,medication, assigned_by) values ('Uth1',6, 5);
 insert into Medication_Plan(name ,medication, assigned_by) values ('GGG1',4, 4);
 insert into Medication_Plan(name ,medication, assigned_by) values ('FD2',3, 6);
+
+insert into Login(username ,password, type, doctor) values ('doctor','doctor', 'D', 1);
+insert into Login(username ,password, type, caregiver) values ('caregiver','caregiver','C', 1);
+insert into Login(username ,password, type, patient) values ('patient','patient', 'P', 1);

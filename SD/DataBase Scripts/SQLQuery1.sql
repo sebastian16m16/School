@@ -65,6 +65,21 @@ create table Medication_Plan(
 
 );
 
+create table Login(
+
+	id int not null identity(1,1) primary key,
+	username varchar(50) not null,
+	password varchar(50) not null,
+	type char(1) not null,
+	patient int,
+	doctor int,
+	caregiver int
+);
+
+alter table Login add foreign key (doctor) references Doctor(id);
+alter table Login add foreign key (caregiver) references Caregiver(id);
+alter table Login add foreign key (patient) references patient(id);
+
 
 alter table Patient add foreign key (doctor) references Doctor(id);
 alter table Patient add foreign key (caregiver) references Caregiver(id);

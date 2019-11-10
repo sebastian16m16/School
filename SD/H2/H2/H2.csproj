@@ -164,12 +164,14 @@
     <Compile Include="Controllers\CaregiverController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Caregiver.cs" />
     <Compile Include="Models\Doctor.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Medication.cs" />
     <Compile Include="Models\Medication_plan.cs" />
     <Compile Include="Models\Patient.cs" />
