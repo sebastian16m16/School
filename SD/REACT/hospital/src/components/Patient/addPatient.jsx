@@ -3,7 +3,7 @@ import { Modal, Button, Row, Col, Form } from "react-bootstrap";
 import SnackBar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 
-export class UpdateDoctor extends Component {
+export class AddPatient extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,22 +16,23 @@ export class UpdateDoctor extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("ID ====>>>" + event.target.id.value);
 
-    fetch("https://localhost:44379/api/doctor", {
-      method: "PUT",
+    fetch("https://localhost:44379/api/patient", {
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        id: event.target.id.value,
+        id: null,
         first_name: event.target.first_name.value,
         last_name: event.target.last_name.value,
         birthdate: event.target.birthdate.value,
-        medical_record: event.target.medical_record.value,
         address: event.target.address.value,
-        gender: event.target.gender.value
+        gender: event.target.gender.value,
+        doctor: event.target.doctor.value,
+        caregiver: event.target.caregiver.value,
+        medication_plan: event.target.medication_plan.value
       })
     })
       .then(res => res.json())
@@ -76,31 +77,19 @@ export class UpdateDoctor extends Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Edit Doctor
+              Add Patient
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Row>
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
-                  <Form.Group controlId="id">
-                    <Form.Label>Doctor ID</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="Doctor ID"
-                      required
-                      disabled
-                      defaultValue={this.props.id}
-                      placeholder="Doctor ID"
-                    />
-                  </Form.Group>
                   <Form.Group controlId="first_name">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control
                       type="text"
                       name="First Name"
                       required
-                      defaultValue={this.props.first_name}
                       placeholder="First Name"
                     />
                   </Form.Group>
@@ -110,7 +99,6 @@ export class UpdateDoctor extends Component {
                       type="text"
                       name="Last Name"
                       required
-                      defaultValue={this.props.last_name}
                       placeholder="Last Name"
                     />
                   </Form.Group>
@@ -120,18 +108,7 @@ export class UpdateDoctor extends Component {
                       type="text"
                       name="Birthdate"
                       required
-                      defaultValue={this.props.birthdate}
                       placeholder="Birthdate"
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="medical_record">
-                    <Form.Label>Medical Record</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="Medical Record"
-                      required
-                      defaultValue={this.props.medical_record}
-                      placeholder="Medical Record"
                     />
                   </Form.Group>
                   <Form.Group controlId="address">
@@ -140,7 +117,6 @@ export class UpdateDoctor extends Component {
                       type="text"
                       name="Address"
                       required
-                      defaultValue={this.props.address}
                       placeholder="Address"
                     />
                   </Form.Group>
@@ -150,17 +126,39 @@ export class UpdateDoctor extends Component {
                       type="text"
                       name="Gender"
                       required
-                      defaultValue={this.props.gender}
                       placeholder="Gender"
                     />
                   </Form.Group>
+                  <Form.Group controlId="doctor">
+                    <Form.Label>Doctor</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Doctor"
+                      required
+                      placeholder="Doctor"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="caregiver">
+                    <Form.Label>Caregiver</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Caregiver"
+                      required
+                      placeholder="Caregiver"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="medication_plan">
+                    <Form.Label>Medication Plan</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Medication Plan"
+                      required
+                      placeholder="Medication Plan"
+                    />
+                  </Form.Group>
                   <Form.Group>
-                    <Button
-                      variant="primary"
-                      type="submit"
-                      onClick={this.props.onHide}
-                    >
-                      Edit Doctor's Info
+                    <Button variant="primary" type="submit">
+                      Add
                     </Button>
                   </Form.Group>
                 </Form>
@@ -177,3 +175,4 @@ export class UpdateDoctor extends Component {
     );
   }
 }
+export default AddPatient;

@@ -3,7 +3,7 @@ import { Modal, Button, Row, Col, Form } from "react-bootstrap";
 import SnackBar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 
-export class UpdateDoctor extends Component {
+export class UpdateCaregiver extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,9 +16,8 @@ export class UpdateDoctor extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("ID ====>>>" + event.target.id.value);
 
-    fetch("https://localhost:44379/api/doctor", {
+    fetch("https://localhost:44379/api/caregiver", {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -29,7 +28,6 @@ export class UpdateDoctor extends Component {
         first_name: event.target.first_name.value,
         last_name: event.target.last_name.value,
         birthdate: event.target.birthdate.value,
-        medical_record: event.target.medical_record.value,
         address: event.target.address.value,
         gender: event.target.gender.value
       })
@@ -76,7 +74,7 @@ export class UpdateDoctor extends Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Edit Doctor
+              Edit Caregiver
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -84,14 +82,14 @@ export class UpdateDoctor extends Component {
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group controlId="id">
-                    <Form.Label>Doctor ID</Form.Label>
+                    <Form.Label>Caregiver ID</Form.Label>
                     <Form.Control
                       type="text"
                       name="Doctor ID"
                       required
                       disabled
                       defaultValue={this.props.id}
-                      placeholder="Doctor ID"
+                      placeholder="Caregiver ID"
                     />
                   </Form.Group>
                   <Form.Group controlId="first_name">
@@ -124,16 +122,6 @@ export class UpdateDoctor extends Component {
                       placeholder="Birthdate"
                     />
                   </Form.Group>
-                  <Form.Group controlId="medical_record">
-                    <Form.Label>Medical Record</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="Medical Record"
-                      required
-                      defaultValue={this.props.medical_record}
-                      placeholder="Medical Record"
-                    />
-                  </Form.Group>
                   <Form.Group controlId="address">
                     <Form.Label>Address</Form.Label>
                     <Form.Control
@@ -155,12 +143,8 @@ export class UpdateDoctor extends Component {
                     />
                   </Form.Group>
                   <Form.Group>
-                    <Button
-                      variant="primary"
-                      type="submit"
-                      onClick={this.props.onHide}
-                    >
-                      Edit Doctor's Info
+                    <Button variant="primary" type="submit">
+                      Edit Caregiver's Info
                     </Button>
                   </Form.Group>
                 </Form>
@@ -177,3 +161,4 @@ export class UpdateDoctor extends Component {
     );
   }
 }
+export default UpdateCaregiver;

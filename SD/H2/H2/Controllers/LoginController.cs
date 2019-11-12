@@ -16,7 +16,7 @@ namespace H2.Controllers
 
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HospitalDB"].ConnectionString);
 
-        public string Get(Login login)
+        public string Post(Login login)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace H2.Controllers
                                 return t;
                             }
                             else
-                                throw new Exception("Wrong Password");
+                                return "Wrong Password";
                         }
 
                     }

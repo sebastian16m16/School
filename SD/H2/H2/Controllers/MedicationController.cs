@@ -11,16 +11,15 @@ using System.Configuration;
 
 namespace H2.Controllers
 {
-    public class CaregiverController : ApiController
+    public class MedicationController : ApiController
     {
-
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HospitalDB"].ConnectionString);
 
         public HttpResponseMessage Get()
         {
             DataTable table = new DataTable();
 
-            string query = "select * from Caregiver";
+            string query = "select * from dbo.medication";
 
             using (con)
             using (var command = new SqlCommand(query, con))
@@ -33,17 +32,16 @@ namespace H2.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
 
-        public string Post(Caregiver caregiver)
+        public string Post(Medication medication)
         {
-            
 
-            
+
             try
             {
                 DataTable tabel = new DataTable();
 
-                string query = "insert into Caregiver(first_name, last_name, birthdate, gender, address) values ('" + caregiver.first_name + "', '" + caregiver.last_name +
-                    "', '" + caregiver.birthdate + "', '" + caregiver.gender + "', '" + caregiver.address + "');";
+                string query = String.Format("insert into dbo.medication(name, side_effect, dosage) values ('{0}', {1}, {2})",
+                    medication.name, medication.side_effect, medication.dosage);
 
                 using (con)
                 using (var command = new SqlCommand(query, con))
@@ -52,22 +50,21 @@ namespace H2.Controllers
                     command.CommandType = CommandType.Text;
                     dataAdapter.Fill(tabel);
                 }
+
                 return "Added Successfully!";
             }
             catch (Exception e)
             {
-
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into Medication Table becuase of: \n " + e.ToString();
             }
-
         }
 
-        public string Put(Caregiver caregiver)
+        public string Put(Medication medication)
         {
             DataTable tabel = new DataTable();
 
-            string query = String.Format("update Caregiver set first_name = '{0}', last_name = '{1}', birthdate = '{2}', gender = '{3}', address = '{4}' where id = {5}",
-                caregiver.first_name, caregiver.last_name, caregiver.birthdate, caregiver.gender, caregiver.address, caregiver.id);
+            string query = String.Format("update medication set name = '{0}', side_effect = {1}, dosage = {2} where id = {3}",
+                medication.name, medication.side_effect, medication.dosage, medication.id);
 
 
             try
@@ -85,7 +82,7 @@ namespace H2.Controllers
             catch (Exception e)
             {
 
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into medication Table becuase of: \n " + e.ToString();
             }
         }
 
@@ -93,7 +90,8 @@ namespace H2.Controllers
         {
             DataTable tabel = new DataTable();
 
-            string query = String.Format("delete from caregiver where id = {0}", id);
+            string query = String.Format("delete from medication where id = {0}", id);
+
 
             try
             {
@@ -110,10 +108,8 @@ namespace H2.Controllers
             catch (Exception e)
             {
 
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into Medication Table becuase of: \n " + e.ToString();
             }
         }
-
-
     }
 }

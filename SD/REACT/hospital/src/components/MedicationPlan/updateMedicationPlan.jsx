@@ -3,7 +3,7 @@ import { Modal, Button, Row, Col, Form } from "react-bootstrap";
 import SnackBar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 
-export class UpdateDoctor extends Component {
+export class UpdateMedicationPlan extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,9 +16,8 @@ export class UpdateDoctor extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("ID ====>>>" + event.target.id.value);
 
-    fetch("https://localhost:44379/api/doctor", {
+    fetch("https://localhost:44379/api/medicationplan", {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -26,12 +25,9 @@ export class UpdateDoctor extends Component {
       },
       body: JSON.stringify({
         id: event.target.id.value,
-        first_name: event.target.first_name.value,
-        last_name: event.target.last_name.value,
-        birthdate: event.target.birthdate.value,
-        medical_record: event.target.medical_record.value,
-        address: event.target.address.value,
-        gender: event.target.gender.value
+        name: event.target.name.value,
+        medication: event.target.medication.value,
+        assigned_by: event.target.assigned_by.value
       })
     })
       .then(res => res.json())
@@ -76,7 +72,7 @@ export class UpdateDoctor extends Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Edit Doctor
+              Edit Medication Plan
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -84,83 +80,49 @@ export class UpdateDoctor extends Component {
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group controlId="id">
-                    <Form.Label>Doctor ID</Form.Label>
+                    <Form.Label>Medication Plan ID</Form.Label>
                     <Form.Control
                       type="text"
-                      name="Doctor ID"
+                      name="Medication Plan ID"
                       required
                       disabled
                       defaultValue={this.props.id}
-                      placeholder="Doctor ID"
+                      placeholder="Medication Plan ID"
                     />
                   </Form.Group>
-                  <Form.Group controlId="first_name">
-                    <Form.Label>First Name</Form.Label>
+                  <Form.Group controlId="name">
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                       type="text"
-                      name="First Name"
+                      name="Name"
                       required
-                      defaultValue={this.props.first_name}
-                      placeholder="First Name"
+                      defaultValue={this.props.name}
+                      placeholder="Name"
                     />
                   </Form.Group>
-                  <Form.Group controlId="last_name">
-                    <Form.Label>Last Name</Form.Label>
+                  <Form.Group controlId="medication">
+                    <Form.Label>Medication</Form.Label>
                     <Form.Control
                       type="text"
-                      name="Last Name"
+                      name="Medication"
                       required
-                      defaultValue={this.props.last_name}
-                      placeholder="Last Name"
+                      defaultValue={this.props.medication}
+                      placeholder="Medication ID"
                     />
                   </Form.Group>
-                  <Form.Group controlId="birthdate">
-                    <Form.Label>Birthdate</Form.Label>
+                  <Form.Group controlId="assigned_by">
+                    <Form.Label>Assigned By</Form.Label>
                     <Form.Control
                       type="text"
-                      name="Birthdate"
+                      name="Assigned By"
                       required
-                      defaultValue={this.props.birthdate}
-                      placeholder="Birthdate"
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="medical_record">
-                    <Form.Label>Medical Record</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="Medical Record"
-                      required
-                      defaultValue={this.props.medical_record}
-                      placeholder="Medical Record"
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="address">
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="Address"
-                      required
-                      defaultValue={this.props.address}
-                      placeholder="Address"
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="gender">
-                    <Form.Label>Gender</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="Gender"
-                      required
-                      defaultValue={this.props.gender}
-                      placeholder="Gender"
+                      defaultValue={this.props.assigned_by}
+                      placeholder="Assigned By (Doctor ID)"
                     />
                   </Form.Group>
                   <Form.Group>
-                    <Button
-                      variant="primary"
-                      type="submit"
-                      onClick={this.props.onHide}
-                    >
-                      Edit Doctor's Info
+                    <Button variant="primary" type="submit">
+                      Edit Medication Plan Info
                     </Button>
                   </Form.Group>
                 </Form>
@@ -177,3 +139,4 @@ export class UpdateDoctor extends Component {
     );
   }
 }
+export default UpdateMedicationPlan;

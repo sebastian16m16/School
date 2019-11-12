@@ -11,16 +11,15 @@ using System.Configuration;
 
 namespace H2.Controllers
 {
-    public class CaregiverController : ApiController
+    public class SideEffectController : ApiController
     {
-
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HospitalDB"].ConnectionString);
 
         public HttpResponseMessage Get()
         {
             DataTable table = new DataTable();
 
-            string query = "select * from Caregiver";
+            string query = "select * from dbo.side_effect";
 
             using (con)
             using (var command = new SqlCommand(query, con))
@@ -33,17 +32,16 @@ namespace H2.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
 
-        public string Post(Caregiver caregiver)
+        public string Post(SideEffect side_effect)
         {
-            
 
-            
+
             try
             {
                 DataTable tabel = new DataTable();
 
-                string query = "insert into Caregiver(first_name, last_name, birthdate, gender, address) values ('" + caregiver.first_name + "', '" + caregiver.last_name +
-                    "', '" + caregiver.birthdate + "', '" + caregiver.gender + "', '" + caregiver.address + "');";
+                string query = String.Format("insert into dbo.side_effect(detail) values ('{0}')",
+                    side_effect.detail);
 
                 using (con)
                 using (var command = new SqlCommand(query, con))
@@ -52,22 +50,21 @@ namespace H2.Controllers
                     command.CommandType = CommandType.Text;
                     dataAdapter.Fill(tabel);
                 }
+
                 return "Added Successfully!";
             }
             catch (Exception e)
             {
-
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into SideEffect Table becuase of: \n " + e.ToString();
             }
-
         }
 
-        public string Put(Caregiver caregiver)
+        public string Put(SideEffect side_effect)
         {
             DataTable tabel = new DataTable();
 
-            string query = String.Format("update Caregiver set first_name = '{0}', last_name = '{1}', birthdate = '{2}', gender = '{3}', address = '{4}' where id = {5}",
-                caregiver.first_name, caregiver.last_name, caregiver.birthdate, caregiver.gender, caregiver.address, caregiver.id);
+            string query = String.Format("update side_effect set detail = '{0}' where id = {1}",
+                side_effect.detail, side_effect.id);
 
 
             try
@@ -85,7 +82,7 @@ namespace H2.Controllers
             catch (Exception e)
             {
 
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into side_effect Table becuase of: \n " + e.ToString();
             }
         }
 
@@ -93,7 +90,8 @@ namespace H2.Controllers
         {
             DataTable tabel = new DataTable();
 
-            string query = String.Format("delete from caregiver where id = {0}", id);
+            string query = String.Format("delete from side_effect where id = {0}", id);
+
 
             try
             {
@@ -110,10 +108,8 @@ namespace H2.Controllers
             catch (Exception e)
             {
 
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into SideEffect Table becuase of: \n " + e.ToString();
             }
         }
-
-
     }
 }

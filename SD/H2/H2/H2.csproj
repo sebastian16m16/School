@@ -165,6 +165,10 @@
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MedicationController.cs" />
+    <Compile Include="Controllers\MedicationPlanController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\SideEffectController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,7 +177,7 @@
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Medication.cs" />
-    <Compile Include="Models\Medication_plan.cs" />
+    <Compile Include="Models\MedicationPlan.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\SideEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

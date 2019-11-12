@@ -11,16 +11,15 @@ using System.Configuration;
 
 namespace H2.Controllers
 {
-    public class CaregiverController : ApiController
+    public class PatientController : ApiController
     {
-
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HospitalDB"].ConnectionString);
 
         public HttpResponseMessage Get()
         {
             DataTable table = new DataTable();
 
-            string query = "select * from Caregiver";
+            string query = "select * from dbo.Patient";
 
             using (con)
             using (var command = new SqlCommand(query, con))
@@ -33,17 +32,17 @@ namespace H2.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
 
-        public string Post(Caregiver caregiver)
+        public string Post(Patient patient)
         {
-            
 
-            
+            string date = patient.birthdate.ToString("yyyy-MM-dd");
+
             try
             {
                 DataTable tabel = new DataTable();
 
-                string query = "insert into Caregiver(first_name, last_name, birthdate, gender, address) values ('" + caregiver.first_name + "', '" + caregiver.last_name +
-                    "', '" + caregiver.birthdate + "', '" + caregiver.gender + "', '" + caregiver.address + "');";
+                string query = String.Format("insert into dbo.Patient(first_name, last_name, birthdate, address, gender, doctor, caregiver, medication_plan) values ('{0}', '{1}', '{2}', '{3}', '{4}', {5}, {6}, {7})",
+                    patient.first_name, patient.last_name, date, patient.address, patient.gender, patient.doctor, patient.caregiver, patient.medication_plan);
 
                 using (con)
                 using (var command = new SqlCommand(query, con))
@@ -52,22 +51,21 @@ namespace H2.Controllers
                     command.CommandType = CommandType.Text;
                     dataAdapter.Fill(tabel);
                 }
+
                 return "Added Successfully!";
             }
             catch (Exception e)
             {
-
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into Doctor Table becuase of: \n " + e.ToString();
             }
-
         }
 
-        public string Put(Caregiver caregiver)
+        public string Put(Patient patient)
         {
             DataTable tabel = new DataTable();
 
-            string query = String.Format("update Caregiver set first_name = '{0}', last_name = '{1}', birthdate = '{2}', gender = '{3}', address = '{4}' where id = {5}",
-                caregiver.first_name, caregiver.last_name, caregiver.birthdate, caregiver.gender, caregiver.address, caregiver.id);
+            string query = String.Format("update Doctor set first_name = '{0}', last_name = '{1}', birthdate = '{2}', address = '{3}', gender = '{4}', doctor = {5}, caregiver = {6}, medication_plan = {7} where id = {8}",
+                patient.first_name, patient.last_name, patient.birthdate, patient.address, patient.gender, patient.doctor, patient.caregiver, patient.medication_plan ,patient.id);
 
 
             try
@@ -85,7 +83,7 @@ namespace H2.Controllers
             catch (Exception e)
             {
 
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into Doctor Table becuase of: \n " + e.ToString();
             }
         }
 
@@ -93,7 +91,8 @@ namespace H2.Controllers
         {
             DataTable tabel = new DataTable();
 
-            string query = String.Format("delete from caregiver where id = {0}", id);
+            string query = String.Format("delete from Patient where id = {0}", id);
+
 
             try
             {
@@ -110,10 +109,8 @@ namespace H2.Controllers
             catch (Exception e)
             {
 
-                return "Failed to insert into Caregiver Table becuase of: \n " + e.ToString();
+                return "Failed to insert into Doctor Table becuase of: \n " + e.ToString();
             }
         }
-
-
     }
 }
