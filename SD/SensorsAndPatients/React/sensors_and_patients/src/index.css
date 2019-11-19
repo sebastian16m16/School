@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.inactive {
+  color: rgb(56, 56, 56);
+  text-decoration: none;
+}
+
+.active {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.DottedBox {
+  margin-left: 10px;
+  margin-right: 100px;
+  margin-top: 30px;
+  margin-bottom: 30 px;
+}

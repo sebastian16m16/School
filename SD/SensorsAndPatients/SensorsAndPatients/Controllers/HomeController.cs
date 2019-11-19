@@ -1,7 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using SensorsAndPatients.Models;
+using SensorsAndPatients.Resource;
 using System.Web.Mvc;
 
 namespace SensorsAndPatients.Controllers
@@ -14,5 +21,7 @@ namespace SensorsAndPatients.Controllers
 
             return View();
         }
+
+        
     }
 }

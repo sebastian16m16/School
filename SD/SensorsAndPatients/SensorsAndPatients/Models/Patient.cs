@@ -11,5 +11,6 @@ namespace SensorsAndPatients.Models
         public DateTime start_time { get; set; }
         public DateTime end_time { get; set; }
         public string activity_label { get; set; }
+        public int caregiver { get; set; }
     }
 }
