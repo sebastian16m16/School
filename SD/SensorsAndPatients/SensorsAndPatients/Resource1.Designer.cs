@@ -61,7 +61,7 @@ namespace SensorsAndPatients {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\users\f93424c\Documents\Learning\SCHOOL\SD\SensorsAndPatients\SensorsAndPatients\Resource\activity.txt.
+        ///   Looks up a localized string similar to C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\Resource\activity.txt.
         /// </summary>
         internal static string activity {
             get {

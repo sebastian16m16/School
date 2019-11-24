@@ -27,9 +27,9 @@ namespace SensorsAndPatients.Resource
             {
                 DataTable tabel = new DataTable();
 
-                string query = String.Format("Insert into table dbo.Notification (notify, about) values ({0}, {1})", notification.notify, notification.about);
+                string query = String.Format("Insert into dbo.Notification (notify, about) values ({0}, {1})", notification.notify, notification.about);
 
-                using (con)
+                using (con = new SqlConnection(ConfigurationManager.ConnectionStrings["SensorsAndPatients"].ConnectionString))
                 using (var command = new SqlCommand(query, con))
                 using (var dataAdapter = new SqlDataAdapter(command))
                 {

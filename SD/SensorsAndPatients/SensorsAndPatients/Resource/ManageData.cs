@@ -30,20 +30,20 @@ namespace SensorsAndPatients.Resource
 
                 switch (data.activity_label)
                 {
-                    case "Sleeping": if (hours > 12) handle.notifyCaregiver(data.patient);
+                    case "Sleeping": if (hours >= 12) handle.notifyCaregiver(data.patient);
                         break;
 
-                    case "Showering": if (hours > 1) handle.notifyCaregiver(data.patient);
+                    case "Showering": if (hours >= 1) handle.notifyCaregiver(data.patient);
                         break;
 
-                    case "Toileting": if (hours > 1) handle.notifyCaregiver(data.patient);
+                    case "Toileting": if (hours >= 1) handle.notifyCaregiver(data.patient);
                         break;
                     
-                    case "Leaving": if (hours > 12) handle.notifyCaregiver(data.patient);
+                    case "Leaving": if (hours >= 12) handle.notifyCaregiver(data.patient);
                         break;
                 }
 
-                await Task.Delay(1000);
+                await Task.Delay(500);
             }
         }
     }

@@ -17,7 +17,7 @@ class ActivitiesPage extends Component {
   }
 
   handleSubmit() {
-    fetch("https://localhost:44301/api/activity", {
+    fetch("https://localhost:44301/api/activity/", {
       method: "DELETE",
       headers: { "content-type": "application/json" }
     });

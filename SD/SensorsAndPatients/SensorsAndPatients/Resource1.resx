@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="activity" xml:space="preserve">
-    <value>D:\users\f93424c\Documents\Learning\SCHOOL\SD\SensorsAndPatients\SensorsAndPatients\Resource\activity.txt</value>
+    <value>C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\Resource\activity.txt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="activity1" type="System.Resources.ResXFileRef, System.Windows.Forms">

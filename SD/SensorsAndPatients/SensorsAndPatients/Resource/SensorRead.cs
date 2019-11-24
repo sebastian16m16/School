@@ -32,7 +32,7 @@ namespace SensorsAndPatients.Resource
 
                 activity.start_time = DateTime.Parse(data[0]);
                 activity.end_time = DateTime.Parse(data[1]);
-                activity.activity_label = data[2];
+                activity.activity_label = data[2].Trim('\t');
 
                 activitiesRead.Add(activity);
 
