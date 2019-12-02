@@ -1,0 +1,9 @@
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\bin\Debug\MedicationDispenser.exe.config
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\bin\Debug\MedicationDispenser.exe
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\bin\Debug\MedicationDispenser.pdb
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\obj\Debug\MedicationDispenser.csprojAssemblyReference.cache
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\obj\Debug\MedicationDispenser.Form1.resources
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\obj\Debug\MedicationDispenser.Properties.Resources.resources
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\obj\Debug\MedicationDispenser.csproj.GenerateResource.cache
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\obj\Debug\MedicationDispenser.exe
+D:\users\f93424c\Documents\Learning\SCHOOL\SD\MedicationDispenser\MedicationDispenser\obj\Debug\MedicationDispenser.pdb
