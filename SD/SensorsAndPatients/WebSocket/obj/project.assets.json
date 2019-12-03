@@ -1,0 +1,231 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "log4net/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40-full/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net40-full/log4net.dll": {}
+        }
+      },
+      "Newtonsoft.Json/6.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SuperWebSocketNETServer/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.2",
+          "log4net": "2.0.3"
+        },
+        "compile": {
+          "lib/net45/SuperSocket.Common.dll": {},
+          "lib/net45/SuperSocket.Facility.dll": {},
+          "lib/net45/SuperSocket.SocketBase.dll": {},
+          "lib/net45/SuperSocket.SocketEngine.dll": {},
+          "lib/net45/SuperWebSocket.dll": {}
+        },
+        "runtime": {
+          "lib/net45/SuperSocket.Common.dll": {},
+          "lib/net45/SuperSocket.Facility.dll": {},
+          "lib/net45/SuperSocket.SocketBase.dll": {},
+          "lib/net45/SuperSocket.SocketEngine.dll": {},
+          "lib/net45/SuperWebSocket.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "log4net/2.0.3": {
+      "sha512": "rxMHzK5efGPo5XtRnuUGO4tfW5l74Aji6kVmtMAt2SgcB5PHBNtNY7yj2LCI2VtKrLPO7kCKR6kH6lIZggq3Gg==",
+      "type": "package",
+      "path": "log4net/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net10-full/log4net.dll",
+        "lib/net10-full/log4net.xml",
+        "lib/net11-full/log4net.dll",
+        "lib/net11-full/log4net.xml",
+        "lib/net20-full/log4net.dll",
+        "lib/net20-full/log4net.xml",
+        "lib/net35-client/log4net.dll",
+        "lib/net35-client/log4net.xml",
+        "lib/net35-full/log4net.dll",
+        "lib/net35-full/log4net.xml",
+        "lib/net40-client/log4net.dll",
+        "lib/net40-client/log4net.xml",
+        "lib/net40-full/log4net.dll",
+        "lib/net40-full/log4net.xml",
+        "log4net.2.0.3.nupkg.sha512",
+        "log4net.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/6.0.2": {
+      "sha512": "dYTDxbpOKlwlWzZLrKOXHI/AoLXdixZM4z3Ez8c5Xgy+bLZty7UWFSoI5B7hqSGntI2GWTqS0Oo8K41Fh+8POw==",
+      "type": "package",
+      "path": "newtonsoft.json/6.0.2",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netcore45/Newtonsoft.Json.dll",
+        "lib/netcore45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+monotouch+monoandroid/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.6.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "SuperWebSocketNETServer/0.8.0": {
+      "sha512": "PTBLuRy607WnkOx069aZrfK48OW2lpQ9TBq+Y5BdIfaickfeIozwBWQjgExdIj9YB+z7ViJ6DfWAfXOpXcHouQ==",
+      "type": "package",
+      "path": "superwebsocketnetserver/0.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/SuperSocket.Common.dll",
+        "lib/net35/SuperSocket.Facility.dll",
+        "lib/net35/SuperSocket.SocketBase.dll",
+        "lib/net35/SuperSocket.SocketEngine.dll",
+        "lib/net35/SuperWebSocket.dll",
+        "lib/net40/SuperSocket.Common.dll",
+        "lib/net40/SuperSocket.Facility.dll",
+        "lib/net40/SuperSocket.SocketBase.dll",
+        "lib/net40/SuperSocket.SocketEngine.dll",
+        "lib/net40/SuperWebSocket.dll",
+        "lib/net45/SuperSocket.Common.dll",
+        "lib/net45/SuperSocket.Facility.dll",
+        "lib/net45/SuperSocket.SocketBase.dll",
+        "lib/net45/SuperSocket.SocketEngine.dll",
+        "lib/net45/SuperWebSocket.dll",
+        "superwebsocketnetserver.0.8.0.nupkg.sha512",
+        "superwebsocketnetserver.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.0": [
+      "SuperWebSocketNETServer >= 0.8.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Sebastian\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\School\\School\\SD\\SensorsAndPatients\\WebSocket\\WebSocket.csproj",
+      "projectName": "WebSocket",
+      "projectPath": "C:\\School\\School\\SD\\SensorsAndPatients\\WebSocket\\WebSocket.csproj",
+      "packagesPath": "C:\\Users\\Sebastian\\.nuget\\packages\\",
+      "outputPath": "C:\\School\\School\\SD\\SensorsAndPatients\\WebSocket\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Sebastian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "dependencies": {
+          "SuperWebSocketNETServer": {
+            "target": "Package",
+            "version": "[0.8.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'log4net 2.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "log4net",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Newtonsoft.Json 6.0.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SuperWebSocketNETServer 0.8.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "SuperWebSocketNETServer",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    }
+  ]
+}

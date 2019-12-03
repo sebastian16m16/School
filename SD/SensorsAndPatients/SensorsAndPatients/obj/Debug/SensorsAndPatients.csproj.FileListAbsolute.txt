@@ -170,3 +170,7 @@ C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\obj\Debug\SensorsAndPa
 C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\obj\Debug\SensorsAndPatients.csproj.CopyComplete
 C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\obj\Debug\SensorsAndPatients.dll
 C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\obj\Debug\SensorsAndPatients.pdb
+C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\bin\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\bin\RabbitMQ.Client.dll
+C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\bin\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\School\School\SD\SensorsAndPatients\SensorsAndPatients\bin\RabbitMQ.Client.xml

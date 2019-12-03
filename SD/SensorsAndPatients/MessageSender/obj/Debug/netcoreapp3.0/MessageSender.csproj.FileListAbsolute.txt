@@ -1,0 +1,15 @@
+C:\School\School\SD\SensorsAndPatients\MessageSender\bin\Debug\netcoreapp3.0\MessageSender.exe
+C:\School\School\SD\SensorsAndPatients\MessageSender\bin\Debug\netcoreapp3.0\MessageSender.deps.json
+C:\School\School\SD\SensorsAndPatients\MessageSender\bin\Debug\netcoreapp3.0\MessageSender.runtimeconfig.json
+C:\School\School\SD\SensorsAndPatients\MessageSender\bin\Debug\netcoreapp3.0\MessageSender.runtimeconfig.dev.json
+C:\School\School\SD\SensorsAndPatients\MessageSender\bin\Debug\netcoreapp3.0\MessageSender.dll
+C:\School\School\SD\SensorsAndPatients\MessageSender\bin\Debug\netcoreapp3.0\MessageSender.pdb
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.csprojAssemblyReference.cache
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.AssemblyInfoInputs.cache
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.AssemblyInfo.cs
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.dll
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.pdb
+C:\School\School\SD\SensorsAndPatients\MessageSender\bin\Debug\netcoreapp3.0\RabbitMQ.Client.dll
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.Properties.Resources.resources
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.csproj.GenerateResource.cache
+C:\School\School\SD\SensorsAndPatients\MessageSender\obj\Debug\netcoreapp3.0\MessageSender.csproj.CopyComplete
