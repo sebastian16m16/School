@@ -1,0 +1,5 @@
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\MedicationDispenser.csprojAssemblyReference.cache
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\MedicationDispenser.Form1.resources
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\MedicationDispenser.csproj.GenerateResource.cache
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\MedicationDispenser.AssemblyInfoInputs.cache
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\MedicationDispenser.AssemblyInfo.cs

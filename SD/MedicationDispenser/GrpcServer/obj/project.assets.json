@@ -617,11 +617,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\users\\f93424c\\Documents\\Learning\\SCHOOL\\SD\\MedicationDispenser\\GrpcServer\\GrpcServer.csproj",
+      "projectUniqueName": "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MedicationDispenser\\GrpcServer\\GrpcServer.csproj",
       "projectName": "GrpcServer",
-      "projectPath": "D:\\users\\f93424c\\Documents\\Learning\\SCHOOL\\SD\\MedicationDispenser\\GrpcServer\\GrpcServer.csproj",
+      "projectPath": "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MedicationDispenser\\GrpcServer\\GrpcServer.csproj",
       "packagesPath": "D:\\users\\f93424c\\.nuget\\packages\\",
-      "outputPath": "D:\\users\\f93424c\\Documents\\Learning\\SCHOOL\\SD\\MedicationDispenser\\GrpcServer\\obj\\",
+      "outputPath": "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MedicationDispenser\\GrpcServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
