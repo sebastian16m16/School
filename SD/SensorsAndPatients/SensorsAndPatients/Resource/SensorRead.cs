@@ -35,8 +35,6 @@ namespace SensorsAndPatients.Resource
                 activity.activity_label = data[2].Trim('\t');
 
                 activitiesRead.Add(activity);
-
-                
             }
 
             read = false;

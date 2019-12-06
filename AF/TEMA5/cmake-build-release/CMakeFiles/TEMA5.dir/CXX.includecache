@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/School/School/AF/TEMA5/Profiler.h
+Windows.h
+-
+Shellapi.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+time.h
+-
+typeinfo
+-
+map
+-
+vector
+-
+algorithm
+-
+functional
+-
+string
+-
+
+C:/School/School/AF/TEMA5/main.cpp
+Profiler.h
+C:/School/School/AF/TEMA5/Profiler.h
+

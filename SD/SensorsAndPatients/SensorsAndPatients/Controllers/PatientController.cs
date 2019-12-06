@@ -125,8 +125,8 @@ namespace SensorsAndPatients.Controllers
             {
                 var dataSet = new DataSet();
 
-                string query = String.Format("Select caregiver from patient where id='{0}'", id);
-                using (con)
+                string query = String.Format("Select caregiver from patient where id= {0}", id);
+                using (con = new SqlConnection(ConfigurationManager.ConnectionStrings["SensorsAndPatients"].ConnectionString))
                 {
                     con.Open();
                     using (var command = new SqlCommand(query, con))

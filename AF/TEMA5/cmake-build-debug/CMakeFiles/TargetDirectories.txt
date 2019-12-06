@@ -1,0 +1,3 @@
+C:/School/School/AF/TEMA5/cmake-build-debug/CMakeFiles/TEMA5.dir
+C:/School/School/AF/TEMA5/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/School/School/AF/TEMA5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
