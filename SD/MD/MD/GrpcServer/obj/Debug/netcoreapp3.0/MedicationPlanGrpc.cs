@@ -25,10 +25,10 @@ namespace GrpcServer {
         __Marshaller_DeleteMP,
         __Marshaller_ReturnMessage);
 
-    static readonly grpc::Method<global::GrpcServer.MPFromPatient, global::GrpcServer.MPModel> __Method_GetMedicationPlanFromClient = new grpc::Method<global::GrpcServer.MPFromPatient, global::GrpcServer.MPModel>(
+    static readonly grpc::Method<global::GrpcServer.MPFromPatient, global::GrpcServer.MPModel> __Method_GetMedicationPlanFromPatient = new grpc::Method<global::GrpcServer.MPFromPatient, global::GrpcServer.MPModel>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetMedicationPlanFromClient",
+        "GetMedicationPlanFromPatient",
         __Marshaller_MPFromPatient,
         __Marshaller_MPModel);
 
@@ -54,7 +54,7 @@ namespace GrpcServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::GrpcServer.MPModel> GetMedicationPlanFromClient(global::GrpcServer.MPFromPatient request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GrpcServer.MPModel> GetMedicationPlanFromPatient(global::GrpcServer.MPFromPatient request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -72,7 +72,7 @@ namespace GrpcServer {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_DeleteMedicationPlan, serviceImpl.DeleteMedicationPlan)
-          .AddMethod(__Method_GetMedicationPlanFromClient, serviceImpl.GetMedicationPlanFromClient)
+          .AddMethod(__Method_GetMedicationPlanFromPatient, serviceImpl.GetMedicationPlanFromPatient)
           .AddMethod(__Method_AddReport, serviceImpl.AddReport).Build();
     }
 
@@ -83,7 +83,7 @@ namespace GrpcServer {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, MedicationPlanBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_DeleteMedicationPlan, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcServer.DeleteMP, global::GrpcServer.ReturnMessage>(serviceImpl.DeleteMedicationPlan));
-      serviceBinder.AddMethod(__Method_GetMedicationPlanFromClient, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcServer.MPFromPatient, global::GrpcServer.MPModel>(serviceImpl.GetMedicationPlanFromClient));
+      serviceBinder.AddMethod(__Method_GetMedicationPlanFromPatient, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcServer.MPFromPatient, global::GrpcServer.MPModel>(serviceImpl.GetMedicationPlanFromPatient));
       serviceBinder.AddMethod(__Method_AddReport, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcServer.ReportModel, global::GrpcServer.ReturnMessage>(serviceImpl.AddReport));
     }
 

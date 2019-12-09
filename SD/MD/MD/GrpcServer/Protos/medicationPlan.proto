@@ -4,7 +4,7 @@ option csharp_namespace = "GrpcServer";
 
 service MedicationPlan{
 	rpc DeleteMedicationPlan(DeleteMP) returns (ReturnMessage);
-	rpc GetMedicationPlanFromClient(MPFromPatient) returns (MPModel);
+	rpc GetMedicationPlanFromPatient(MPFromPatient) returns (MPModel);
 	rpc AddReport(ReportModel) returns (ReturnMessage);
 }
 

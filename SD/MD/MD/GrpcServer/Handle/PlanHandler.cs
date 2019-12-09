@@ -12,7 +12,7 @@ namespace GrpcServer.Handle
     {
         string connectionString = ConfigurationManager.ConnectionStrings["MedicationDispenser"].ConnectionString;
 
-        public void deletePlan(int id)
+        public bool deletePlan(int id)
         {
 
             string query = "Delete from Medication_Plan where id = " + id;
@@ -33,9 +33,11 @@ namespace GrpcServer.Handle
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
+                        return false;
                     }
                 }
             }
+            return true;
         }
 
         public DateTime getPlanIntakeHour(int id)
@@ -68,7 +70,7 @@ namespace GrpcServer.Handle
             return new DateTime();
         }
 
-        public void addReport(Report report)
+        public bool addReport(Report report)
         {
             string query = String.Format("Insert into Report (patient, medication_schedule, taken) values({0}, {1}, {2})", report.patient, report.medication_schedule, report.taken);
 
@@ -87,9 +89,11 @@ namespace GrpcServer.Handle
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
+                        return false;
                     }
                 }
             }
+            return true;
         }
 
         public MedicationSchedule getMedicationSchedule(int id)
@@ -120,6 +124,34 @@ namespace GrpcServer.Handle
             }
 
                 return new MedicationSchedule();
+        }
+
+        public Medication_Plan getMPfromPatient(int id)
+        {
+            string query = "Select * from Medication_Plan where patient = " + id;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader;
+
+                    connection.Open();
+                    reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Medication_Plan medication_Plan = new Medication_Plan(
+                            reader.GetInt32(0),
+                            reader.GetInt32(1),
+                            reader.GetInt32(2),
+                            reader.GetDateTime(3)
+                            );
+                        return medication_Plan;
+                    }
+                }
+            }
+            return new Medication_Plan();
         }
     }
 }
