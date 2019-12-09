@@ -50,7 +50,6 @@ namespace GrpcServer.Services
 
             returnMessage.DONE = planHandler.addReport(report);
 
-
             return Task.FromResult(returnMessage);
         }
     }
