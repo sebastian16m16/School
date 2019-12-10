@@ -39,12 +39,12 @@ create table Medication_Schedule(
 
 );
 
-create table ReplyData(
+create table Report(
 
 	id int not null identity(1,1) primary key,
 	patient int,
 	medication_Schedule int,
-	taken bit,
+	taken tinyint,
 	
 );
 
@@ -54,5 +54,5 @@ alter table Medication_plan add foreign key (medication_schedule) references Med
 
 alter table Medication_Schedule add foreign key (patient) references Patient(id);
 alter table Medication_Schedule add foreign key (doctor) references Doctor(id);
-alter table ReplyData add foreign key (patient) references Patient(id);
-alter table ReplyData add foreign key (medication_schedule) references medication_Schedule(id);
+alter table Report add foreign key (patient) references Patient(id);
+alter table Report add foreign key (medication_schedule) references medication_Schedule(id);

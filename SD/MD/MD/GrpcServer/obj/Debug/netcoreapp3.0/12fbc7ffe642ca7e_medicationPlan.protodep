@@ -1,0 +1,2 @@
+obj\Debug\netcoreapp3.0/MedicationPlan.cs \
+obj\Debug\netcoreapp3.0/MedicationPlanGrpc.cs: Protos/medicationPlan.proto

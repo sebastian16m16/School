@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+service MedicationPlan{
+	rpc DeleteMedicationPlan(DeleteMP) returns (ReturnMessage);
+	rpc GetMedicationPlanFromPatient(MPFromPatient) returns (MPModel);
+	rpc AddReport(ReportModel) returns (ReturnMessage);
+}
+
+message ReturnMessage{
+	bool DONE = 1;
+}
+
+message MPFromPatient{
+	int32 patient = 1;
+}
+
+message DeleteMP{
+	int32 id = 1;
+}
+
+message MPModel{
+	int32 id = 1;
+	int32 medication = 2;
+	int32 medication_plan = 3;
+	string time = 4;
+}
+
+message ReportModel{
+	int32 id = 1;
+	int32 patient = 2;
+	int32 medication_schedule = 3;
+	bool taken = 4;
+}

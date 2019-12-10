@@ -1,0 +1,13 @@
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\bin\Debug\netcoreapp3.0\WebDispenser.exe
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\WebDispenser.csprojAssemblyReference.cache
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\WebDispenser.AssemblyInfoInputs.cache
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\WebDispenser.AssemblyInfo.cs
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\bin\Debug\netcoreapp3.0\Grpc.Core.Api.dll
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\bin\Debug\netcoreapp3.0\Grpc.Net.Client.dll
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\bin\Debug\netcoreapp3.0\Grpc.Net.Common.dll
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\WebDispenser.csproj.CopyComplete
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\bin\Debug\netcoreapp3.0\Google.Protobuf.dll
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\MedicationDispenser.Form1.resources
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\MedicationDispenser.Form2.resources
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\WebDispenser\obj\Debug\netcoreapp3.0\WebDispenser.csproj.GenerateResource.cache

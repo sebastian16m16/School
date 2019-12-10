@@ -1,0 +1,11 @@
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\bin\Debug\netcoreapp3.0\Client.exe
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\bin\Debug\netcoreapp3.0\Client.deps.json
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\bin\Debug\netcoreapp3.0\Client.runtimeconfig.json
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\bin\Debug\netcoreapp3.0\Client.runtimeconfig.dev.json
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\bin\Debug\netcoreapp3.0\Client.dll
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\bin\Debug\netcoreapp3.0\Client.pdb
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\obj\Debug\netcoreapp3.0\Client.csprojAssemblyReference.cache
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\obj\Debug\netcoreapp3.0\Client.AssemblyInfoInputs.cache
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\obj\Debug\netcoreapp3.0\Client.AssemblyInfo.cs
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\obj\Debug\netcoreapp3.0\Client.dll
+D:\users\f93424c\Documents\Learning\C#\School\SD\MedicationDispenser\Client\obj\Debug\netcoreapp3.0\Client.pdb
