@@ -1,5 +1,4 @@
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\bin\Debug\netcoreapp3.0\Client.exe
-D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\obj\Debug\netcoreapp3.0\Client.csprojAssemblyReference.cache
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\obj\Debug\netcoreapp3.0\Client.AssemblyInfoInputs.cache
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\obj\Debug\netcoreapp3.0\Client.AssemblyInfo.cs
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\bin\Debug\netcoreapp3.0\Microsoft.Win32.Registry.dll
@@ -43,3 +42,4 @@ D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\bin\Debug\netcorea
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\obj\Debug\netcoreapp3.0\Client.dll
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\obj\Debug\netcoreapp3.0\Client.pdb
+D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\Client\obj\Debug\netcoreapp3.0\Client.csprojAssemblyReference.cache

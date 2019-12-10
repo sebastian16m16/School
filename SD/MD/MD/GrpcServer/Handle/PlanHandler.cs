@@ -10,7 +10,7 @@ namespace GrpcServer.Handle
 {
     public class PlanHandler
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["MedicationDispenser"].ConnectionString;
+        string connectionString = "Data Source=LT0256015;Initial Catalog = MedicationDispenser; Integrated Security = True";
 
         public bool deletePlan(int id)
         {
@@ -126,9 +126,10 @@ namespace GrpcServer.Handle
                 return new MedicationSchedule();
         }
 
-        public Medication_Plan getMPfromPatient(int id)
+        public List<Medication_Plan> getMPfromPatient(int id)
         {
             string query = "Select * from Medication_Plan where patient = " + id;
+            List<Medication_Plan> returnList = new List<Medication_Plan>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -137,21 +138,31 @@ namespace GrpcServer.Handle
                     SqlDataReader reader;
 
                     connection.Open();
-                    reader = command.ExecuteReader();
-
-                    while (reader.Read())
+                    try
                     {
-                        Medication_Plan medication_Plan = new Medication_Plan(
-                            reader.GetInt32(0),
-                            reader.GetInt32(1),
-                            reader.GetInt32(2),
-                            reader.GetDateTime(3)
-                            );
-                        return medication_Plan;
+                        reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Medication_Plan medication_Plan = new Medication_Plan(
+                                reader.GetInt32(0),
+                                reader.GetInt32(1),
+                                reader.GetInt32(2),
+                                reader.GetInt32(3),
+                                reader.GetDateTime(4)
+                                );
+                            returnList.Add(medication_Plan);
+
+                        }
+                        return returnList;
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        return returnList;
                     }
                 }
             }
-            return new Medication_Plan();
         }
     }
 }

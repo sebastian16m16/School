@@ -25,9 +25,11 @@ create table Medication(
 create table Medication_Plan(
 
 	id int not null identity(1,1) primary key,
+	patient int,
 	medication int not null,
 	medication_schedule int,
 	intakeTime datetime,
+	
 );
 
 create table Medication_Schedule(
@@ -51,8 +53,12 @@ create table Report(
 alter table patient add foreign key (doctor) references Doctor(id);
 alter table Medication_plan add foreign key (medication) references Medication(id);
 alter table Medication_plan add foreign key (medication_schedule) references Medication_Schedule(id);
+alter table Medication_plan add foreign key (patient) references Patient(id);
+
 
 alter table Medication_Schedule add foreign key (patient) references Patient(id);
 alter table Medication_Schedule add foreign key (doctor) references Doctor(id);
 alter table Report add foreign key (patient) references Patient(id);
 alter table Report add foreign key (medication_schedule) references medication_Schedule(id);
+
+

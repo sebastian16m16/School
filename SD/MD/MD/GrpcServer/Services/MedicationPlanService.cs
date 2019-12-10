@@ -13,7 +13,7 @@ namespace GrpcServer.Services
     {
         private readonly ILogger<MedicationPlanService> logger;
         private PlanHandler planHandler = new PlanHandler();
-        PlanHandler handler = new PlanHandler();
+        
 
         public MedicationPlanService(ILogger<MedicationPlanService> logger)
         {
@@ -29,18 +29,22 @@ namespace GrpcServer.Services
             return Task.FromResult(returnMessage);
         }
 
-        public override Task<MPModel> GetMedicationPlanFromPatient(MPFromPatient request, ServerCallContext context)
+        public override async Task GetMedicationPlanFromPatient(MPFromPatient request, IServerStreamWriter<MPModel> responseStream, ServerCallContext context)
         {
-            MPModel mPModel = new MPModel();
-            Medication_Plan medication_Plan = planHandler.getMPfromPatient(request.Patient);
+            List<Medication_Plan> medication_Plan = planHandler.getMPfromPatient(request.Patient);
 
-            mPModel.Id = medication_Plan.Id;
-            mPModel.Medication = medication_Plan.Medication;
-            mPModel.MedicationPlan = medication_Plan.Medication_Schedule;
-            mPModel.Time = medication_Plan.time.ToString();
+            foreach (var plan in medication_Plan)
+            {
+                MPModel mPModel = new MPModel();
 
+                mPModel.Id = plan.Id;
+                mPModel.Patient = plan.Patient;
+                mPModel.Medication = plan.Medication;
+                mPModel.MedicationPlan = plan.Medication_Schedule;
+                mPModel.Time = plan.time.ToString();
 
-            return Task.FromResult(mPModel);
+                await responseStream.WriteAsync(mPModel);
+            }
         }
 
         public override Task<ReturnMessage> AddReport(ReportModel request, ServerCallContext context)

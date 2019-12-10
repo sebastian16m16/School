@@ -1,3 +1,5 @@
+using Grpc.Net.Client;
+using GrpcServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,15 @@ namespace Client
         [STAThread]
         static void Main()
         {
+            //Connection
+            var channel = GrpcChannel.ForAddress("https://localhost:5001");
+            MedicationPlan.MedicationPlanClient client = new MedicationPlan.MedicationPlanClient(channel);
+
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form1(client));
         }
     }
 }
