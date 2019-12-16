@@ -51,3 +51,4 @@ D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\GrpcServer\obj\Debug\netc
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\GrpcServer\obj\Debug\netcoreapp3.0\GrpcServer.csproj.CopyComplete
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\GrpcServer\obj\Debug\netcoreapp3.0\GrpcServer.dll
 D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\GrpcServer\obj\Debug\netcoreapp3.0\GrpcServer.pdb
+D:\users\f93424c\Documents\Learning\C#\School\SD\MD\MD\GrpcServer\obj\Debug\netcoreapp3.0\GrpcServer.csprojAssemblyReference.cache

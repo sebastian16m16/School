@@ -3,4 +3,4 @@ project(TEMA7)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TEMA7 main.cpp Queue.h)
+add_executable(TEMA7 main.cpp Queue.h Stack.h)
