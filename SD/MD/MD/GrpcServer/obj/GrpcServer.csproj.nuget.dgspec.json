@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj": {}
+    "C:\\School\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj": {}
   },
   "projects": {
-    "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj": {
+    "C:\\School\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj",
+        "projectUniqueName": "C:\\School\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj",
         "projectName": "GrpcServer",
-        "projectPath": "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj",
-        "packagesPath": "D:\\users\\f93424c\\.nuget\\packages\\",
-        "outputPath": "D:\\users\\f93424c\\Documents\\Learning\\C#\\School\\SD\\MD\\MD\\GrpcServer\\obj\\",
+        "projectPath": "C:\\School\\School\\SD\\MD\\MD\\GrpcServer\\GrpcServer.csproj",
+        "packagesPath": "C:\\Users\\Sebastian\\.nuget\\packages\\",
+        "outputPath": "C:\\School\\School\\SD\\MD\\MD\\GrpcServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "D:\\users\\f93424c\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Sebastian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"

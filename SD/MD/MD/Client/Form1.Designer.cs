@@ -69,10 +69,11 @@ namespace Client
             this.patientIdTextBox.Text = "0";
             this.Controls.Add(patientIdTextBox);
 
-            //BUTTON
+            //DOWNLOAD BUTTON
             this.downloadButton = new System.Windows.Forms.Button();
             this.downloadButton.Location = new System.Drawing.Point(
                 this.patientLabel.Location.X + 30, this.patientLabel.Location.Y + 30);
+            this.downloadButton.AutoSize = true;
             this.downloadButton.Text = "Download";
             this.downloadButton.MouseClick += DownloadButton_MouseClick;
             this.Controls.Add(downloadButton);

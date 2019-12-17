@@ -5,8 +5,7 @@ enum { NOT_VISITED, VISITED};
 
 typedef struct {
     int n;
-    int *t;
-    int *liste;
+    Node **t;
 } Graf;
 
 Graf * createGraf(int * nods, int *b, int nrOfNodes){
@@ -16,19 +15,40 @@ Graf * createGraf(int * nods, int *b, int nrOfNodes){
     }
 }
 
-void bfs(const int nodes, int root){
-    int visitedNodes[nodes];
-    Queue *queue = initQueue(queue);
-    int i, v, w;
+void bfs(Graf G, int nodSursa)
+{
+    int* vizitate; /* pentru marcarea nodurilor vizitate */
+    vizitate = calloc(G.n, sizeof(int));
+    if (vizitate == NULL) printErr();
 
-    for(i = 0 ; i < nodes; i++){
-        visitedNodes[i] = NOT_VISITED;
-    }
-    visitedNodes[root] = VISITED;
-    enqueue(queue, root);
+    Queue* Q = initQueue(Q); /* coada nodurilor - intregi */
 
-    while(!queueEmpty(queue)){
-        v = dequeue(queue)->Key;
+    int i, v, w; /* noduri */
+
+
+    for (i = 0; i < G.n; i++) /* marcam toate nodurile ca nevizitate */
+        vizitate[i] = NOT_VISITED;
+    vizitate[nodSursa] = VISITED; /* marcam nodul sursa ca vizitat */
+
+//	procesam informatia pt nodSursa;
+    printf("%d ", nodSursa);
+    enqueue( Q, nodSursa );
+    // nodSursa va fi primul nod scos din coada
+    while( ! queueEmpty( Q ))
+    {
+        v = dequeue( Q );
+        Node* p = G.t[v];
+        while (p != NULL) {
+            w = p->Key;
+            if (vizitate[w] == NOT_VISITED)
+            {
+                vizitate[w] = VISITED;
+                //procesam informatia pt w;
+                printf("%d ", w);
+                enqueue(Q, w);
+            }
+            p = p->next;
+        }
     }
 }
 

@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA7/main.cpp" "D:/users/f93424c/Documents/Learning/SCHOOL/AF/TEMA7/cmake-build-debug/CMakeFiles/TEMA7.dir/main.cpp.obj"
+  "C:/School/School/AF/TEMA7/main.cpp" "C:/School/School/AF/TEMA7/cmake-build-debug/CMakeFiles/TEMA7.dir/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

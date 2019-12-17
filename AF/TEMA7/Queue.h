@@ -24,10 +24,10 @@ Queue* enqueue(Queue *queue,int k){
     return queue;
 }
 
-Node *dequeue(Queue* queue){
+int dequeue(Queue* queue){
     Node* ret = queue->front;
     queue->front = queue->front->next;
-    return ret;
+    return ret->Key;
 }
 
 int queueSIZE(Queue* queue){

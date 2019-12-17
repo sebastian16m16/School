@@ -10,7 +10,7 @@ namespace GrpcServer.Handle
 {
     public class PlanHandler
     {
-        string connectionString = "Data Source=LT0256015;Initial Catalog = MedicationDispenser; Integrated Security = True";
+        string connectionString = @"Data Source=DESKTOP-EJFE3EN\SQLEXPRESS;Initial Catalog=MedicationDispenser;Integrated Security=True";
 
         public bool deletePlan(int id)
         {
